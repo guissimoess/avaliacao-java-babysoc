@@ -1,7 +1,10 @@
 package br.com.soc.sistema.business;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
 
 import br.com.soc.sistema.dao.exames.ExameDao;
 import br.com.soc.sistema.exception.BusinessException;
@@ -42,15 +45,9 @@ public class ExameBusiness {
 			throw new BusinessException("Nao foi possivel realizar a atualizacao do registro");
 		}
 	}
-	
 
 	public void excluirExame(String rowid) {
-		try {
 			dao.deleteExame(rowid);
-		} catch (Exception e) {
-			throw new BusinessException("Nao foi possivel realizar a exclusao do registro");
-		}
-		
 	}
 
 	public List<ExameVo> filtrarExames(ExameFilter filter) {

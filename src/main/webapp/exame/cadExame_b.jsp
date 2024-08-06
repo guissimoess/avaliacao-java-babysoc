@@ -17,6 +17,10 @@
 			<a href="${funcionarios}" class="btn btn-primary"> <s:text
 					name="label.funcionarios" />
 			</a>
+			<s:url action="listarExamesRealizados" var="examesRealizados" />
+			<a href="${examesRealizados}" class="btn btn-primary"> <s:text
+					name="Exames realizados" />
+			</a>
 		</div>
 		<div class="row mt-5 mb-2">
 

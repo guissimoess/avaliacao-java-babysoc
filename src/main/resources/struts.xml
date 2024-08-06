@@ -24,11 +24,20 @@
 			<result name="redirect" type="redirectAction">todosExames</result>
 		</action>
 		<action name="*Funcionarios"
-			class="br.com.soc.sistema.action.funcionario.FuncionarioAction" method="{1}">
+			class="br.com.soc.sistema.action.funcionario.FuncionarioAction"
+			method="{1}">
 			<result name="listar">/funcionario/cadFuncionario_b.jsp</result>
 			<result name="incluir">/funcionario/cadFuncionario_i.jsp</result>
 			<result name="editar">/funcionario/cadFuncionario_a.jsp</result>
 			<result name="redirect" type="redirectAction">listarFuncionarios</result>
+		</action>
+		<action name="*ExamesRealizados"
+			class="br.com.soc.sistema.action.examerealizado.ExameRealizadoAction"
+			method="{1}">
+			<result name="listar">/examerealizado/cadExameRealizado_b.jsp</result>
+			<result name="incluir">/examerealizado/cadExameRealizado_i.jsp</result>
+			<result name="editar">/examerealizado/cadExameRealizado_a.jsp</result>
+			<result name="redirect" type="redirectAction">listarExamesRealizados</result>
 		</action>
 	</package>
 

@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
+
 import br.com.soc.sistema.dao.Dao;
+import br.com.soc.sistema.exception.BusinessException;
+import br.com.soc.sistema.exception.DBException;
 import br.com.soc.sistema.vo.ExameVo;
 
 public class ExameDao extends Dao {
@@ -42,8 +46,8 @@ public class ExameDao extends Dao {
 		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query)) {
 			ps.setString(1, rowid);
 			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new DBException("O exame está sendo realizado por algum funcionário");
 		}
 	}
 

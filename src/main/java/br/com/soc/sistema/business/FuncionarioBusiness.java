@@ -12,9 +12,11 @@ public class FuncionarioBusiness {
 
 	private static final String FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO = "Foi informado um caracter no lugar de um numero";
 	private FuncionarioDao dao;
+	private ExameRealizadoBusiness exameRealizadoBusiness = new ExameRealizadoBusiness();
 
 	public FuncionarioBusiness() {
 		this.dao = new FuncionarioDao();
+		
 	}
 
 	public List<FuncionarioVo> listarTodosFuncionarios() {
@@ -46,6 +48,7 @@ public class FuncionarioBusiness {
 	public void excluirFuncionario(String rowid) {
 		try {
 			Integer codigo = Integer.parseInt(rowid);
+			exameRealizadoBusiness.excluirExamesRealizadosPorFuncionario(rowid);
 			dao.deleteFuncionario(codigo);
 		} catch (Exception e) {
 			throw new BusinessException("Nao foi possivel realizar a exclusao do registro");
