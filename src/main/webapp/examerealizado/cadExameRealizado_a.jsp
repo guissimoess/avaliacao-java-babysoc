@@ -59,13 +59,13 @@
 							<label for="idFuncionario" class="form-label">Novo ID do
 								Funcionário:</label>
 							<s:textfield cssClass="form-control" id="idFuncionario"
-								name="novoExame.funcionarioVo.rowid" />
+								name="novoExame.funcionarioVo.rowid"  type="number"/>
 						</div>
 
 						<div class="col-sm-4 mb-3">
 							<label for="idExame" class="form-label">Novo ID do Exame:</label>
 							<s:textfield cssClass="form-control" id="idExame"
-								name="novoExame.exameVo.rowid" />
+								name="novoExame.exameVo.rowid" type="number"/>
 						</div>
 
 						<div class="col-sm-4 mb-3">

@@ -32,17 +32,17 @@
 
                         <div class="col-sm-4 mb-3">
                             <label for="idFuncionario" class="form-label">ID do Funcionário:</label>
-                            <s:textfield cssClass="form-control" id="idFuncionario" name="exameRealizadoVo.funcionarioVo.rowid" />
+                            <s:textfield cssClass="form-control" id="idFuncionario" name="exameRealizadoVo.funcionarioVo.rowid" type="number" required="true"/>
                         </div>
 
                         <div class="col-sm-4 mb-3">
                             <label for="idExame" class="form-label">ID do Exame:</label>
-                            <s:textfield cssClass="form-control" id="idExame" name="exameRealizadoVo.exameVo.rowid" />
+                            <s:textfield cssClass="form-control" id="idExame" name="exameRealizadoVo.exameVo.rowid" type="number" required="true"/>
                         </div>
 
                         <div class="col-sm-4 mb-3">
                             <label for="dataExame" class="form-label">Data do Exame:</label>
-                            <s:textfield cssClass="form-control" id="dataExame" name="exameRealizadoVo.dataExame" type="date" />
+                            <s:textfield cssClass="form-control" id="dataExame" name="exameRealizadoVo.dataExame" type="date" required="true" />
                         </div>
                     </div>
                 </div>

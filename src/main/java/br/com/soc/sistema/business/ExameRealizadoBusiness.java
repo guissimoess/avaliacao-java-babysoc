@@ -15,13 +15,10 @@ public class ExameRealizadoBusiness {
 	public ExameRealizadoBusiness() {
 		this.dao = new ExameRealizadoDao();
 	}
+
 	
-	public List<ExameRealizadoVo> listarExamesRealizados() {
+	public List<ExameRealizadoVo> listarExamesRealizados () {
 		return dao.selectAllExamesRealizados();
-	}
-	
-	public List<ExameRealizadoVo> listarExamesRealizadosId () {
-		return dao.selectAllExamesRealizadosId();
 	}
 
 	public void salvarExameRealizado(ExameRealizadoVo exameRealizadoVo) {

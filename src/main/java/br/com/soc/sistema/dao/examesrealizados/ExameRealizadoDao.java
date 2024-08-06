@@ -34,37 +34,7 @@ public class ExameRealizadoDao extends Dao {
 		}
 	}
 	
-
-	public List<ExameRealizadoVo> selectAllExamesRealizados() {
-		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
-		String query = "SELECT f.nm_funcionario AS nome_funcionario, e.nm_exame AS nome_exame, ef.dt_exame "
-				+ "FROM exame_funcionario ef " + "JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
-				+ "JOIN exame e ON ef.rowid_exame = e.rowid";
-		try (Connection con = getConexao();
-				PreparedStatement ps = con.prepareStatement(query);
-				ResultSet rs = ps.executeQuery()) {
-			while (rs.next()) {
-				ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
-				FuncionarioVo funcionarioVo = new FuncionarioVo();
-				ExameVo exameVo = new ExameVo();
-
-				funcionarioVo.setNome(rs.getString("nome_funcionario"));
-				exameVo.setNome(rs.getString("nome_exame"));
-				exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
-
-				exameRealizadoVo.setFuncionarioVo(funcionarioVo);
-				exameRealizadoVo.setExameVo(exameVo);
-				examesRealizados.add(exameRealizadoVo);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return examesRealizados;
-	}
-	
-	public List<ExameRealizadoVo> selectAllExamesRealizadosId () {
+	public List<ExameRealizadoVo> selectAllExamesRealizados () {
 		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
 		String query = "SELECT f.rowid AS funcionario_rowid, e.rowid AS exame_rowid, ef.dt_exame "
 				+ "FROM exame_funcionario ef JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
@@ -126,6 +96,58 @@ public class ExameRealizadoDao extends Dao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<ExameRealizadoVo> selectAllExamesRealizadosByFuncionarioId(String rowid) {
+		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
+		String query = "SELECT f.rowid AS funcionario_rowid, e.rowid AS exame_rowid, ef.dt_exame "
+				+ "FROM exame_funcionario ef JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
+				+ "JOIN exame e ON ef.rowid_exame = e.rowid WHERE f.rowid = ?";
+		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query)) {
+			ps.setString(1, rowid);
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
+					FuncionarioVo funcionarioVo = new FuncionarioVo();
+					ExameVo exameVo = new ExameVo();
+					funcionarioVo.setRowid(rs.getString("funcionario_rowid"));
+					exameVo.setRowid(rs.getString("exame_rowid"));
+					exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
+					exameRealizadoVo.setFuncionarioVo(funcionarioVo);
+					exameRealizadoVo.setExameVo(exameVo);
+					examesRealizados.add(exameRealizadoVo);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return examesRealizados;
+	}
+	
+	public List<ExameRealizadoVo> selectAllExamesRealizadosByExameId(String rowid) {
+		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
+		String query = "SELECT f.rowid AS funcionario_rowid, e.rowid AS exame_rowid, ef.dt_exame "
+				+ "FROM exame_funcionario ef JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
+				+ "JOIN exame e ON ef.rowid_exame = e.rowid WHERE e.rowid = ?";
+		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query)) {
+			ps.setString(1, rowid);
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
+					FuncionarioVo funcionarioVo = new FuncionarioVo();
+					ExameVo exameVo = new ExameVo();
+					funcionarioVo.setRowid(rs.getString("funcionario_rowid"));
+					exameVo.setRowid(rs.getString("exame_rowid"));
+					exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
+					exameRealizadoVo.setFuncionarioVo(funcionarioVo);
+					exameRealizadoVo.setExameVo(exameVo);
+					examesRealizados.add(exameRealizadoVo);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return examesRealizados;
 	}
 
 	

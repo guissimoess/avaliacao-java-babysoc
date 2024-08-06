@@ -30,7 +30,7 @@
 									name="label.buscar.por" /></strong>
 						</span>
 						<s:select cssClass="form-select" name="tipoFiltro" label="Tipo"
-							list="#{'FuncionarioID':'FUNCIONARIO ID', 'ExameID':'EXAME ID', 'Data' : 'DATA'}" headerKey=""
+							list="#{'FuncionarioID':'FUNCIONARIO ID', 'ExameID':'EXAME ID'}" headerKey=""
 							headerValue="Escolha..." />
 						<s:textfield cssClass="form-control" label="Valor"
 							name="valorFiltro" />

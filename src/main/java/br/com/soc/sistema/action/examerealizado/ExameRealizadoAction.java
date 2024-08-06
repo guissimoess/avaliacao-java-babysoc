@@ -18,7 +18,7 @@ public class ExameRealizadoAction {
 	private String novaDataExame;
 
 	public String listar() {
-		examesRealizados = exameRealizadoBusiness.listarExamesRealizadosId();
+		examesRealizados = exameRealizadoBusiness.listarExamesRealizados();
 		return "listar";
 	}
 
