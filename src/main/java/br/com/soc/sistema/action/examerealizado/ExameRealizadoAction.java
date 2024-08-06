@@ -16,6 +16,9 @@ public class ExameRealizadoAction {
 	private ExameRealizadoVo novoExame = new ExameRealizadoVo();
 	private String dataExame;
 	private String novaDataExame;
+	private String tipoFiltro;
+	private String valorFiltro;
+
 
 	public String listar() {
 		examesRealizados = exameRealizadoBusiness.listarExamesRealizados();
@@ -70,6 +73,15 @@ public class ExameRealizadoAction {
 		return "redirect";
 	}
 	
+	public String filtrar () {
+		if (valorFiltro.isEmpty()) {
+			return "redirect";
+		}
+		examesRealizados = exameRealizadoBusiness.filtrarExameRealizado(tipoFiltro, valorFiltro);
+		return "listar";
+	}
+	
+	
 	
 
 	public String getDataExame() {
@@ -119,6 +131,24 @@ public class ExameRealizadoAction {
 	public void setNovaDataExame(String novaDataExame) {
 		this.novaDataExame = novaDataExame;
 	}
+	
+	public String getTipoFiltro() {
+		return tipoFiltro;
+	}
+	
+	public void setTipoFiltro(String tipoFiltro) {
+		this.tipoFiltro = tipoFiltro;
+	}
+	
+	public String getValorFiltro() {
+		return valorFiltro;
+	}
+	
+	public void setValorFiltro(String valorFiltro) {
+		this.valorFiltro = valorFiltro;
+	}
+	
+	
 	
 	
 	

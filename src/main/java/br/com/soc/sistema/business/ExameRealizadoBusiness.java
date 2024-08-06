@@ -1,11 +1,13 @@
 package br.com.soc.sistema.business;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.soc.sistema.dao.examesrealizados.ExameRealizadoDao;
 import br.com.soc.sistema.exception.BusinessException;
 import br.com.soc.sistema.vo.ExameRealizadoVo;
+import br.com.soc.sistema.vo.FuncionarioVo;
 
 public class ExameRealizadoBusiness {
 	
@@ -49,6 +51,28 @@ public class ExameRealizadoBusiness {
 	
 	public void atualizarExameRealizado(ExameRealizadoVo antigoExame, ExameRealizadoVo exameAtualizado) {
 		dao.updateExamesRealizados(antigoExame, exameAtualizado);
+	}
+	
+	public List<ExameRealizadoVo> filtrarExameRealizado(String tipoFiltro, String valorFiltro) {
+		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
+			switch (tipoFiltro) {
+			case "FuncionarioID":
+				try {
+					examesRealizados.addAll(dao.selectAllExamesRealizadosByFuncionarioId(valorFiltro));
+					return examesRealizados;
+				} catch (NumberFormatException e) {
+					throw new BusinessException(FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO);
+				}
+			case "ExameID":
+				try {
+					examesRealizados.addAll(dao.selectAllExamesRealizadosByExameId(valorFiltro));
+					return examesRealizados;
+				} catch (NumberFormatException e) {
+					throw new BusinessException(FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO);
+				}
+			}
+			return examesRealizados;
+		
 	}
 	
 	
