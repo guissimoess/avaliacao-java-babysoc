@@ -25,7 +25,6 @@ public class RelatorioAction extends Action {
 		try {
 			Date dataInicialFormatada = new SimpleDateFormat("yyyy-MM-dd").parse(dataInicial);
 			Date dataFinalFormatada = new SimpleDateFormat("yyyy-MM-dd").parse(dataFinal);
-
 			examesRealizados = business.filtrarExamesRealizadosPorPeriodo(dataInicialFormatada, dataFinalFormatada);
 			return "browser";
 			

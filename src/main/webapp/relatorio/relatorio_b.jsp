@@ -31,9 +31,9 @@
 				<s:form action="filtrarRelatorios.action">
 					<div class="input-group">
 						<s:textfield cssClass="form-control" label="Data Inicial"
-							name="dataInicial" type="date" required="true"/>
-						<s:textfield cssClass="form-control" label="Valor"
-							name="dataFinal" type="date" required="true"/>
+							name="dataInicial" type="date" required="true" />
+						<s:textfield cssClass="form-control" label="Data Final"
+							name="dataFinal" type="date" required="true" />
 						<button class="btn btn-primary" type="submit">
 							<s:text name="label.pesquisar" />
 						</button>
