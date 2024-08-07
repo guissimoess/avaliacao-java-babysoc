@@ -21,6 +21,10 @@
 			<a href="${funcionarios}" class="btn btn-primary"> <s:text
 					name="Funcionarios" />
 			</a>
+			<s:url action="browserRelatorios" var="relatorios" />
+			<a href="${relatorios}" class="btn btn-primary"> <s:text
+					name="Relatorios" />
+			</a>
 		</div>
 		<div class="row mt-5 mb-2">
 			<div class="col-sm p-0">
@@ -30,8 +34,8 @@
 									name="label.buscar.por" /></strong>
 						</span>
 						<s:select cssClass="form-select" name="tipoFiltro" label="Tipo"
-							list="#{'FuncionarioID':'FUNCIONARIO ID', 'ExameID':'EXAME ID'}" headerKey=""
-							headerValue="Escolha..." />
+							list="#{'FuncionarioID':'FUNCIONARIO ID', 'ExameID':'EXAME ID'}"
+							headerKey="" headerValue="Escolha..." />
 						<s:textfield cssClass="form-control" label="Valor"
 							name="valorFiltro" />
 						<button class="btn btn-primary" type="submit">
@@ -60,9 +64,7 @@
 							<td>${exameVo.rowid}</td>
 							<td><fmt:formatDate value="${dataExame}" type="date"
 									pattern="dd/MM/yyyy" /></td>
-							<td class="text-end">
-							
-							<s:url action="editarExamesRealizados"
+							<td class="text-end"><s:url action="editarExamesRealizados"
 									var="editar">
 									<s:param name="exameRealizadoVo.funcionarioVo.rowid"
 										value="funcionarioVo.rowid"></s:param>
@@ -71,9 +73,7 @@
 									<s:param name="dataExame" value="dataExame"></s:param>
 								</s:url> <a href="${editar}" class="btn btn-warning text-white"> <s:text
 										name="label.editar" />
-							</a> 
-							
-							<s:url action="excluirExamesRealizados" var="excluir">
+							</a> <s:url action="excluirExamesRealizados" var="excluir">
 									<s:param name="exameRealizadoVo.funcionarioVo.rowid"
 										value="funcionarioVo.rowid"></s:param>
 									<s:param name="exameRealizadoVo.exameVo.rowid"

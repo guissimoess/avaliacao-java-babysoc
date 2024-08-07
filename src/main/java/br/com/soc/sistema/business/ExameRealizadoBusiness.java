@@ -2,6 +2,7 @@ package br.com.soc.sistema.business;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.com.soc.sistema.dao.examesrealizados.ExameRealizadoDao;
@@ -73,6 +74,16 @@ public class ExameRealizadoBusiness {
 			}
 			return examesRealizados;
 		
+	}
+	
+	public List<ExameRealizadoVo> filtrarExamesRealizadosPorPeriodo(Date dataInicial, Date dataFinal) {
+		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
+		try {
+			examesRealizados.addAll(dao.selectAllExamesRealizadosPorPeriodo(dataInicial, dataFinal));
+			return examesRealizados;
+		} catch (Exception e) {
+			throw new BusinessException("Não foi possivel filtrar os exames realizados por periodo");
+		}
 	}
 	
 	

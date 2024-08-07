@@ -39,6 +39,12 @@
 			<result name="editar">/examerealizado/cadExameRealizado_a.jsp</result>
 			<result name="redirect" type="redirectAction">listarExamesRealizados</result>
 		</action>
+		<action name="*Relatorios"
+			class="br.com.soc.sistema.action.relatorio.RelatorioAction"
+			method="{1}">
+			<result name="browser">/relatorio/relatorio_b.jsp</result>
+			<result name="redirect" type="redirectAction">browserRelatorios</result>
+		</action>
 	</package>
 
 </struts>

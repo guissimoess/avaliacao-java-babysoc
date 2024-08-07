@@ -21,6 +21,10 @@
 			<a href="${examesRealizados}" class="btn btn-primary"> <s:text
 					name="Exames realizados" />
 			</a>
+			<s:url action="browserRelatorios" var="relatorios" />
+			<a href="${relatorios}" class="btn btn-primary"> <s:text
+					name="Relatorios" />
+			</a>
 		</div>
 		<div class="row mt-5 mb-2">
 
