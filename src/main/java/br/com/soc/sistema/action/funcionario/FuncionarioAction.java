@@ -9,7 +9,7 @@ import br.com.soc.sistema.business.FuncionarioBusiness;
 import br.com.soc.sistema.infra.Action;
 import br.com.soc.sistema.vo.FuncionarioVo;
 
-public class FuncionarioAction extends ActionSupport{
+public class FuncionarioAction extends Action{
 	private List<FuncionarioVo> funcionarios = new ArrayList<>();
 	private FuncionarioVo funcionarioVo = new FuncionarioVo();
 	private FuncionarioBusiness business = new FuncionarioBusiness();

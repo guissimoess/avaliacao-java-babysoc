@@ -36,9 +36,7 @@ public class ExameRealizadoDao extends Dao {
 
 	public List<ExameRealizadoVo> selectAllExamesRealizados() {
 		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
-		String query = "SELECT f.rowid AS funcionario_rowid, e.rowid AS exame_rowid, ef.dt_exame "
-				+ "FROM exame_funcionario ef JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
-				+ "JOIN exame e ON ef.rowid_exame = e.rowid;";
+		String query = "SELECT rowid_funcionario, rowid_exame, dt_exame from exame_funcionario";
 		try (Connection con = getConexao();
 				PreparedStatement ps = con.prepareStatement(query);
 				ResultSet rs = ps.executeQuery()) {
@@ -46,8 +44,8 @@ public class ExameRealizadoDao extends Dao {
 				ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
 				FuncionarioVo funcionarioVo = new FuncionarioVo();
 				ExameVo exameVo = new ExameVo();
-				funcionarioVo.setRowid(rs.getString("funcionario_rowid"));
-				exameVo.setRowid(rs.getString("exame_rowid"));
+				funcionarioVo.setRowid(rs.getString("rowid_funcionario"));
+				exameVo.setRowid(rs.getString("rowid_exame"));
 				exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
 				exameRealizadoVo.setFuncionarioVo(funcionarioVo);
 				exameRealizadoVo.setExameVo(exameVo);
