@@ -78,7 +78,7 @@
 										value="funcionarioVo.rowid"></s:param>
 									<s:param name="exameRealizadoVo.exameVo.rowid"
 										value="exameVo.rowid"></s:param>
-									<s:param name="dataExame" value="dataExame"></s:param>
+									<s:param name="exameRealizadoVo.dataExame" value="dataExame"></s:param>
 								</s:url> <a href="${excluir}" class="btn btn-danger"> <s:text
 										name="label.excluir" />
 							</a></td>

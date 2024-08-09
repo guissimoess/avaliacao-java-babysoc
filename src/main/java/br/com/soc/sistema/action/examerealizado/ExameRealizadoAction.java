@@ -16,7 +16,7 @@ public class ExameRealizadoAction {
 	private ExameRealizadoVo novoExame = new ExameRealizadoVo();
 	private String dataExame;
 	private String novaDataExame;
-	private String tipoFiltro;
+	private String tipoFiltro;	
 	private String valorFiltro;
 
 
@@ -35,14 +35,7 @@ public class ExameRealizadoAction {
 	}
 
 	public String excluir() {
-		try {
-			Date dataFormatada = new SimpleDateFormat("yyyy-MM-dd").parse(getDataExame());
-			exameRealizadoVo.setDataExame(dataFormatada);
-			exameRealizadoBusiness.excluirExameRealizado(exameRealizadoVo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		exameRealizadoBusiness.excluirExameRealizado(exameRealizadoVo);
 		return "redirect";
 	}
 	
