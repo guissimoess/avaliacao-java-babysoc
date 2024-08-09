@@ -15,8 +15,6 @@ public class ExameRealizadoAction extends Action{
 	private List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
 	private ExameRealizadoBusiness exameRealizadoBusiness = new ExameRealizadoBusiness();
 	private ExameRealizadoVo novoExame = new ExameRealizadoVo();
-	private String dataExame;
-	private String novaDataExame;
 	private String tipoFiltro;
 	private String valorFiltro;
 
@@ -57,14 +55,6 @@ public class ExameRealizadoAction extends Action{
 		return "listar";
 	}
 
-	public String getDataExame() {
-		return dataExame;
-	}
-
-	public void setDataExame(String dataExame) {
-		this.dataExame = dataExame;
-	}
-
 	public ExameRealizadoBusiness getExameRealizadoBusiness() {
 		return exameRealizadoBusiness;
 	}
@@ -95,14 +85,6 @@ public class ExameRealizadoAction extends Action{
 
 	public void setNovoExame(ExameRealizadoVo novoExame) {
 		this.novoExame = novoExame;
-	}
-
-	public String getNovaDataExame() {
-		return novaDataExame;
-	}
-
-	public void setNovaDataExame(String novaDataExame) {
-		this.novaDataExame = novaDataExame;
 	}
 
 	public String getTipoFiltro() {
