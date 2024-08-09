@@ -47,7 +47,7 @@
 						<div class="col-sm-4 mb-3">
 							<label for="dataExame" class="form-label">Data do Exame:</label>
 							<s:textfield cssClass="form-control" id="dataExame"
-								name="dataExame" readonly="true" type="date" />
+								name="exameRealizadoVo.dataExame" readonly="true" />
 						</div>
 					</div>
 				</div>
@@ -72,7 +72,7 @@
 							<label for="dataExame" class="form-label">Nova Data do
 								Exame: </label>
 							<s:textfield cssClass="form-control" id="dataExame"
-								name="novaDataExame" type="date" required="true" />
+								name="novoExame.dataExame" type="date" required="true" />
 						</div>
 					</div>
 				</div>

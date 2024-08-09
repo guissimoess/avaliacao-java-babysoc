@@ -64,16 +64,20 @@
 							<td>${exameVo.rowid}</td>
 							<td><fmt:formatDate value="${dataExame}" type="date"
 									pattern="dd/MM/yyyy" /></td>
-							<td class="text-end"><s:url action="editarExamesRealizados"
+							<td class="text-end">
+							
+							<s:url action="editarExamesRealizados"
 									var="editar">
 									<s:param name="exameRealizadoVo.funcionarioVo.rowid"
 										value="funcionarioVo.rowid"></s:param>
 									<s:param name="exameRealizadoVo.exameVo.rowid"
 										value="exameVo.rowid"></s:param>
-									<s:param name="dataExame" value="dataExame"></s:param>
+									<s:param name="exameRealizadoVo.dataExame" value="dataExame"></s:param>
 								</s:url> <a href="${editar}" class="btn btn-warning text-white"> <s:text
 										name="label.editar" />
-							</a> <s:url action="excluirExamesRealizados" var="excluir">
+							</a> 
+							
+							<s:url action="excluirExamesRealizados" var="excluir">
 									<s:param name="exameRealizadoVo.funcionarioVo.rowid"
 										value="funcionarioVo.rowid"></s:param>
 									<s:param name="exameRealizadoVo.exameVo.rowid"

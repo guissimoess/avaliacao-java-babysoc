@@ -6,9 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.soc.sistema.business.ExameRealizadoBusiness;
+import br.com.soc.sistema.infra.Action;
 import br.com.soc.sistema.vo.ExameRealizadoVo;
 
-public class ExameRealizadoAction {
+public class ExameRealizadoAction extends Action{
 
 	private ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
 	private List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
@@ -16,9 +17,8 @@ public class ExameRealizadoAction {
 	private ExameRealizadoVo novoExame = new ExameRealizadoVo();
 	private String dataExame;
 	private String novaDataExame;
-	private String tipoFiltro;	
+	private String tipoFiltro;
 	private String valorFiltro;
-
 
 	public String listar() {
 		examesRealizados = exameRealizadoBusiness.listarExamesRealizados();
@@ -38,44 +38,24 @@ public class ExameRealizadoAction {
 		exameRealizadoBusiness.excluirExameRealizado(exameRealizadoVo);
 		return "redirect";
 	}
-	
-	public String editar () {
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			Date dataFormatada = sdf.parse(dataExame);
-			exameRealizadoVo.setDataExame(dataFormatada);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+
+	public String editar() {
 		return "editar";
 	}
-	
-	public String salvarEdicao () {
-		try {
-	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	        Date antigaDataFormatada = sdf.parse(dataExame);
-	        Date novaDataFormatada = sdf.parse(getNovaDataExame());
-	        exameRealizadoVo.setDataExame(antigaDataFormatada);
-	        novoExame.setDataExame(novaDataFormatada); 
-	        exameRealizadoBusiness.atualizarExameRealizado(exameRealizadoVo, novoExame);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+	public String salvarEdicao() {
+		exameRealizadoBusiness.atualizarExameRealizado(exameRealizadoVo, novoExame);
 
 		return "redirect";
 	}
-	
-	public String filtrar () {
+
+	public String filtrar() {
 		if (valorFiltro.isEmpty()) {
 			return "redirect";
 		}
 		examesRealizados = exameRealizadoBusiness.filtrarExameRealizado(tipoFiltro, valorFiltro);
 		return "listar";
 	}
-	
-	
-	
 
 	public String getDataExame() {
 		return dataExame;
@@ -116,31 +96,29 @@ public class ExameRealizadoAction {
 	public void setNovoExame(ExameRealizadoVo novoExame) {
 		this.novoExame = novoExame;
 	}
-	
+
 	public String getNovaDataExame() {
 		return novaDataExame;
 	}
-	
+
 	public void setNovaDataExame(String novaDataExame) {
 		this.novaDataExame = novaDataExame;
 	}
-	
+
 	public String getTipoFiltro() {
 		return tipoFiltro;
 	}
-	
+
 	public void setTipoFiltro(String tipoFiltro) {
 		this.tipoFiltro = tipoFiltro;
 	}
-	
+
 	public String getValorFiltro() {
 		return valorFiltro;
 	}
-	
+
 	public void setValorFiltro(String valorFiltro) {
 		this.valorFiltro = valorFiltro;
 	}
-	
-
 
 }
