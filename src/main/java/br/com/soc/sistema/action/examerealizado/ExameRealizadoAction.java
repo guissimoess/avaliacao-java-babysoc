@@ -141,9 +141,6 @@ public class ExameRealizadoAction {
 		this.valorFiltro = valorFiltro;
 	}
 	
-	
-	
-	
-	
+
 
 }

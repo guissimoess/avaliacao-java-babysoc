@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title><s:text name="Exames realizados" /></title>
+<title><s:text name="Relatorio de exames realizados" /></title>
 <link rel='stylesheet'
 	href='webjars/bootstrap/5.1.3/css/bootstrap.min.css'>
 </head>

@@ -7,12 +7,14 @@ import java.util.List;
 
 import br.com.soc.sistema.business.ExameRealizadoBusiness;
 import br.com.soc.sistema.infra.Action;
+import br.com.soc.sistema.relatorio.ExamesRealizadosRelatorio;
 import br.com.soc.sistema.vo.ExameRealizadoVo;
 
 public class RelatorioAction extends Action {
 	private ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
 	private List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
 	private ExameRealizadoBusiness business = new ExameRealizadoBusiness();
+	private ExamesRealizadosRelatorio relatorio = new ExamesRealizadosRelatorio();
 	private String dataInicial;
 	private String dataFinal;
 	
@@ -26,6 +28,7 @@ public class RelatorioAction extends Action {
 			Date dataInicialFormatada = new SimpleDateFormat("yyyy-MM-dd").parse(dataInicial);
 			Date dataFinalFormatada = new SimpleDateFormat("yyyy-MM-dd").parse(dataFinal);
 			examesRealizados = business.filtrarExamesRealizadosPorPeriodo(dataInicialFormatada, dataFinalFormatada);
+			relatorio.gerarRelatorioExames(examesRealizados);
 			return "browser";
 			
 		} catch (Exception e) {
