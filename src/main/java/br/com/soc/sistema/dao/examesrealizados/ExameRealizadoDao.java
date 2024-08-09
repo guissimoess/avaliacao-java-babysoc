@@ -57,12 +57,13 @@ public class ExameRealizadoDao extends Dao {
 		return examesRealizados;
 	}
 
-	public void deleteExameRealizado(String rowidFuncionario, String rowidExame, String dataExame) {
+	public void deleteExameRealizado(ExameRealizadoVo exameRealizadoVo) {
 		String query = "DELETE FROM exame_funcionario WHERE rowid_funcionario = ? AND rowid_exame = ? AND dt_exame = ?";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query)) {
-			ps.setString(1, rowidFuncionario);
-			ps.setString(2, rowidExame);
-			ps.setString(3, dataExame);
+			ps.setString(1, exameRealizadoVo.getFuncionarioVo().getRowid());
+			ps.setString(2, exameRealizadoVo.getExameVo().getRowid());
+			ps.setString(3, sdf.format(exameRealizadoVo.getDataExame()));
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

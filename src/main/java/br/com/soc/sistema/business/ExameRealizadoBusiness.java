@@ -1,6 +1,5 @@
 package br.com.soc.sistema.business;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import br.com.soc.sistema.dao.examesrealizados.ExameRealizadoDao;
 import br.com.soc.sistema.exception.BusinessException;
 import br.com.soc.sistema.vo.ExameRealizadoVo;
-import br.com.soc.sistema.vo.FuncionarioVo;
 
 public class ExameRealizadoBusiness {
 	
@@ -34,9 +32,8 @@ public class ExameRealizadoBusiness {
 	}
 
 	public void excluirExameRealizado(ExameRealizadoVo exameRealizadoVo) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			dao.deleteExameRealizado(exameRealizadoVo.getFuncionarioVo().getRowid(), exameRealizadoVo.getExameVo().getRowid(), sdf.format(exameRealizadoVo.getDataExame()));
+			dao.deleteExameRealizado(exameRealizadoVo);
 		} catch (Exception e) {
 			throw new BusinessException("Não foi possivel excluir o exame realizado");
 		}
