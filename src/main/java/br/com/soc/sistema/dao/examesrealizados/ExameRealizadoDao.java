@@ -100,9 +100,7 @@ public class ExameRealizadoDao extends Dao {
 
 	public List<ExameRealizadoVo> selectAllExamesRealizadosByFuncionarioId(String rowid) {
 		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
-		String query = "SELECT f.rowid AS funcionario_rowid, e.rowid AS exame_rowid, ef.dt_exame "
-				+ "FROM exame_funcionario ef " + "JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
-				+ "JOIN exame e ON ef.rowid_exame = e.rowid " + "WHERE f.rowid = ?";
+		String query = "SELECT rowid_funcionario, rowid_exame, dt_exame from exame_funcionario WHERE rowid_funcionario = ?";
 		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query)) {
 			ps.setString(1, rowid);
 			try (ResultSet rs = ps.executeQuery()) {
@@ -110,8 +108,8 @@ public class ExameRealizadoDao extends Dao {
 					ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
 					FuncionarioVo funcionarioVo = new FuncionarioVo();
 					ExameVo exameVo = new ExameVo();
-					funcionarioVo.setRowid(rs.getString("funcionario_rowid"));
-					exameVo.setRowid(rs.getString("exame_rowid"));
+					funcionarioVo.setRowid(rs.getString("rowid_funcionario"));
+					exameVo.setRowid(rs.getString("rowid_exame"));
 					exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
 					exameRealizadoVo.setFuncionarioVo(funcionarioVo);
 					exameRealizadoVo.setExameVo(exameVo);
@@ -126,9 +124,7 @@ public class ExameRealizadoDao extends Dao {
 
 	public List<ExameRealizadoVo> selectAllExamesRealizadosByExameId(String rowid) {
 		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
-		String query = "SELECT f.rowid AS funcionario_rowid, e.rowid AS exame_rowid, ef.dt_exame "
-				+ "FROM exame_funcionario ef " + "JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
-				+ "JOIN exame e ON ef.rowid_exame = e.rowid " + "WHERE e.rowid = ?";
+		String query = "SELECT rowid_funcionario, rowid_exame, dt_exame from exame_funcionario WHERE rowid_exame = ?";
 		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query)) {
 			ps.setString(1, rowid);
 			try (ResultSet rs = ps.executeQuery()) {
@@ -136,8 +132,8 @@ public class ExameRealizadoDao extends Dao {
 					ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
 					FuncionarioVo funcionarioVo = new FuncionarioVo();
 					ExameVo exameVo = new ExameVo();
-					funcionarioVo.setRowid(rs.getString("funcionario_rowid"));
-					exameVo.setRowid(rs.getString("exame_rowid"));
+					funcionarioVo.setRowid(rs.getString("rowid_funcionario"));
+					exameVo.setRowid(rs.getString("rowid_exame"));
 					exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
 					exameRealizadoVo.setFuncionarioVo(funcionarioVo);
 					exameRealizadoVo.setExameVo(exameVo);

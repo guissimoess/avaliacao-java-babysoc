@@ -15,7 +15,7 @@ import br.com.soc.sistema.vo.ExameRealizadoVo;
 
 public class ExamesRealizadosRelatorio {
 	
-	private static final String relatoriofile = "C:\\Users\\pichau\\Documents\\avaliacaodev\\relatorios\\relatorio.xls";
+	private static final String ARQUIVO_RELATORIO = "C:\\Users\\pichau\\Documents\\avaliacaodev\\relatorios\\relatorio.xls";
 	
 	HSSFWorkbook workbook = new HSSFWorkbook();
 	HSSFSheet sheet = workbook.createSheet("Relatório de Exames Realizados");
@@ -52,9 +52,8 @@ public class ExamesRealizadosRelatorio {
 		}
 		
 		try {
-			FileOutputStream out = new FileOutputStream(new File(relatoriofile));
+			FileOutputStream out = new FileOutputStream(new File(ARQUIVO_RELATORIO));
 			workbook.write(out);
-			System.out.println("Relatório gerado com sucesso!");
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
