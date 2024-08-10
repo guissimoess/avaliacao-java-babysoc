@@ -54,6 +54,7 @@ public class ExamesRealizadosRelatorio {
 		try {
 			FileOutputStream out = new FileOutputStream(new File(ARQUIVO_RELATORIO));
 			workbook.write(out);
+			System.out.println("Relatório gerado");
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();

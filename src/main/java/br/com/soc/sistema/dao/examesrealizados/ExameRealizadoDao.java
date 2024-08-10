@@ -145,25 +145,25 @@ public class ExameRealizadoDao extends Dao {
 		}
 		return examesRealizados;
 	}
-	
-	public List<ExameRealizadoVo> selectAllExamesRealizadosPorPeriodo(Date dataInicial, Date dataFinal) {
+
+	public List<ExameRealizadoVo> selectAllExamesRealizadosPorPeriodo(String dataInicial, String dataFinal) {
 		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	    String query = "SELECT f.rowid AS id_funcionario, f.nm_funcionario, e.rowid AS id_exame, e.nm_exame, ef.dt_exame " +
-                "FROM exame_funcionario ef " +
-                "JOIN funcionario f ON ef.rowid_funcionario = f.rowid " +
-                "JOIN exame e ON ef.rowid_exame = e.rowid " +
-                "WHERE ef.dt_exame BETWEEN ? AND ?";
+		String query = "SELECT f.rowid AS id_funcionario, f.nm_funcionario, e.rowid AS id_exame, e.nm_exame, ef.dt_exame "
+				+ "FROM exame_funcionario ef " + "JOIN funcionario f ON ef.rowid_funcionario = f.rowid "
+				+ "JOIN exame e ON ef.rowid_exame = e.rowid " + "WHERE ef.dt_exame BETWEEN ? AND ?";
 		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query)) {
-			ps.setString(1, sdf.format(dataInicial));
-			ps.setString(2, sdf.format(dataFinal));
+			ps.setString(1, dataInicial);
+			ps.setString(2, dataFinal);
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
 					ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
-	                exameRealizadoVo.setFuncionarioVo(new FuncionarioVo(rs.getString("id_funcionario"), rs.getString("nm_funcionario")));
-	                exameRealizadoVo.setExameVo(new ExameVo(rs.getString("id_exame"), rs.getString("nm_exame")));
-	                exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
-	                examesRealizados.add(exameRealizadoVo);
+					FuncionarioVo funcionarioVo = new FuncionarioVo(rs.getString("id_funcionario"), rs.getString("nm_funcionario"));
+					ExameVo exameVo = new ExameVo(rs.getString("id_exame"), rs.getString("nm_exame"));
+					exameRealizadoVo.setExameVo(exameVo);
+					exameRealizadoVo.setFuncionarioVo(funcionarioVo);
+					exameRealizadoVo.setDataExame(rs.getDate("dt_exame"));
+					examesRealizados.add(exameRealizadoVo);
 				}
 			}
 		} catch (Exception e) {

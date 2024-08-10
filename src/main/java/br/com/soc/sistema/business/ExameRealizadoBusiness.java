@@ -73,7 +73,7 @@ public class ExameRealizadoBusiness {
 		
 	}
 	
-	public List<ExameRealizadoVo> filtrarExamesRealizadosPorPeriodo(Date dataInicial, Date dataFinal) {
+	public List<ExameRealizadoVo> filtrarExamesRealizadosPorPeriodo(String dataInicial, String dataFinal) {
 		List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
 		try {
 			examesRealizados.addAll(dao.selectAllExamesRealizadosPorPeriodo(dataInicial, dataFinal));

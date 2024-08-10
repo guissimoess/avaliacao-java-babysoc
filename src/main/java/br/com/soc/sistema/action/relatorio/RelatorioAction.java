@@ -11,39 +11,21 @@ import br.com.soc.sistema.relatorio.ExamesRealizadosRelatorio;
 import br.com.soc.sistema.vo.ExameRealizadoVo;
 
 public class RelatorioAction extends Action {
-	private ExameRealizadoVo exameRealizadoVo = new ExameRealizadoVo();
 	private List<ExameRealizadoVo> examesRealizados = new ArrayList<ExameRealizadoVo>();
 	private ExameRealizadoBusiness business = new ExameRealizadoBusiness();
 	private ExamesRealizadosRelatorio relatorio = new ExamesRealizadosRelatorio();
 	private String dataInicial;
 	private String dataFinal;
-	
 
-	public String browser () {
+	public String browser() {
 		return "browser";
 	}
-	
-	public String filtrar () {
-		try {
-			Date dataInicialFormatada = new SimpleDateFormat("yyyy-MM-dd").parse(dataInicial);
-			Date dataFinalFormatada = new SimpleDateFormat("yyyy-MM-dd").parse(dataFinal);
-			examesRealizados = business.filtrarExamesRealizadosPorPeriodo(dataInicialFormatada, dataFinalFormatada);
-			relatorio.gerarRelatorioExames(examesRealizados);
-			return "browser";
-			
-		} catch (Exception e) {
-            e.printStackTrace();
-		}
+
+	public String filtrar() {
+
+		examesRealizados = business.filtrarExamesRealizadosPorPeriodo(dataInicial, dataFinal);
+		relatorio.gerarRelatorioExames(examesRealizados);
 		return "browser";
-		
-	}
-
-	public ExameRealizadoVo getExameRealizadoVo() {
-		return exameRealizadoVo;
-	}
-
-	public void setExameRealizadoVo(ExameRealizadoVo exameRealizadoVo) {
-		this.exameRealizadoVo = exameRealizadoVo;
 	}
 
 	public List<ExameRealizadoVo> getExamesRealizados() {
@@ -77,7 +59,5 @@ public class RelatorioAction extends Action {
 	public void setDataFinal(String dataFinal) {
 		this.dataFinal = dataFinal;
 	}
-	
-	
 
 }
